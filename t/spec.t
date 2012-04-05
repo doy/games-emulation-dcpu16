@@ -47,7 +47,7 @@ isa_ok($cpu, 'Games::Emulation::DCPU16');
 is_deeply($cpu->memory, [(0) x 0x10000]);
 is_deeply($cpu->registers, [ (0x0000) x 8 ]);
 is($cpu->PC, 0x0000);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->load($bytecode);
@@ -67,7 +67,7 @@ is_deeply(
     [ (0x0000) x 8 ],
 );
 is($cpu->PC, 0x0000);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x0030
@@ -87,7 +87,7 @@ is_deeply(
     [ (0x0000) x 8 ],
 );
 is($cpu->PC, 0x0002);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET A, 0x30
@@ -107,7 +107,7 @@ is_deeply(
     [ 0x0030, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0002);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x1000
@@ -127,7 +127,7 @@ is_deeply(
     [ 0x0030, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0004);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x0020
@@ -147,7 +147,7 @@ is_deeply(
     [ 0x0030, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0005);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x1000], 0x20
@@ -169,7 +169,7 @@ is_deeply(
     [ 0x0030, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0005);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x1000
@@ -191,7 +191,7 @@ is_deeply(
     [ 0x0030, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0007);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -213,7 +213,7 @@ is_deeply(
     [ 0x0030, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0007);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB A, [0x1000]
@@ -235,7 +235,7 @@ is_deeply(
     [ 0x0010, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0007);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -257,7 +257,7 @@ is_deeply(
     [ 0x0010, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0008);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -279,7 +279,7 @@ is_deeply(
     [ 0x0010, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0008);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN A, 0x10
@@ -301,7 +301,7 @@ is_deeply(
     [ 0x0010, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x000a);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET I, 10
@@ -323,7 +323,7 @@ is_deeply(
     [ 0x0010, (0x0000) x 5, 0x000a, 0x0000 ],
 );
 is($cpu->PC, 0x000b);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -345,7 +345,7 @@ is_deeply(
     [ 0x0010, (0x0000) x 5, 0x000a, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET A, 0x2000
@@ -367,7 +367,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x000a, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -389,7 +389,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x000a, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -411,7 +411,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x000a, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -433,7 +433,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x000a, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -455,7 +455,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -477,7 +477,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -499,7 +499,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -521,7 +521,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -543,7 +543,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -565,7 +565,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -587,7 +587,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -609,7 +609,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -631,7 +631,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -653,7 +653,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -675,7 +675,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -697,7 +697,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -719,7 +719,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -741,7 +741,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -763,7 +763,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -785,7 +785,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -807,7 +807,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -829,7 +829,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -851,7 +851,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -873,7 +873,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -895,7 +895,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -917,7 +917,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -939,7 +939,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -961,7 +961,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -983,7 +983,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1005,7 +1005,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -1027,7 +1027,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -1049,7 +1049,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -1071,7 +1071,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -1093,7 +1093,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -1115,7 +1115,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1137,7 +1137,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -1159,7 +1159,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1181,7 +1181,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -1203,7 +1203,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -1225,7 +1225,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -1247,7 +1247,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -1269,7 +1269,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -1291,7 +1291,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1313,7 +1313,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -1335,7 +1335,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1357,7 +1357,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -1379,7 +1379,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -1401,7 +1401,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -1423,7 +1423,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -1445,7 +1445,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -1467,7 +1467,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1489,7 +1489,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -1511,7 +1511,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1533,7 +1533,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -1555,7 +1555,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -1577,7 +1577,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -1599,7 +1599,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -1621,7 +1621,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -1643,7 +1643,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1665,7 +1665,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -1687,7 +1687,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1709,7 +1709,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -1731,7 +1731,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -1753,7 +1753,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -1775,7 +1775,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -1797,7 +1797,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -1819,7 +1819,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1841,7 +1841,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -1863,7 +1863,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -1885,7 +1885,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -1907,7 +1907,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x000d
@@ -1929,7 +1929,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, loop
@@ -1951,7 +1951,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x000d);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x2000
@@ -1973,7 +1973,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET [0x2000+I], [A]
@@ -1995,7 +1995,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x000f);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -2017,7 +2017,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SUB I, 1
@@ -2039,7 +2039,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0010);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -2061,7 +2061,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -2083,7 +2083,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0011);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute IFN I, 0
@@ -2105,7 +2105,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 7 ],
 );
 is($cpu->PC, 0x0013);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET X, 0x4
@@ -2127,7 +2127,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0014);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x0018
@@ -2149,7 +2149,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0016);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -2171,7 +2171,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0016);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute JSR testsub
@@ -2194,7 +2194,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0018);
-is($cpu->SP, 0xfffe);
+is($cpu->SP, 0xffff);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execution delay
@@ -2217,7 +2217,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0019);
-is($cpu->SP, 0xfffe);
+is($cpu->SP, 0xffff);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SHL X, 4
@@ -2240,7 +2240,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0019);
-is($cpu->SP, 0xfffe);
+is($cpu->SP, 0xffff);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, POP
@@ -2263,7 +2263,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0016);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x001a
@@ -2286,7 +2286,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x0018);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, crash
@@ -2309,7 +2309,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001a);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x001a
@@ -2332,7 +2332,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001c);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, crash
@@ -2355,7 +2355,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001a);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x001a
@@ -2378,7 +2378,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001c);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, crash
@@ -2401,7 +2401,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001a);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x001a
@@ -2424,7 +2424,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001c);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, crash
@@ -2447,7 +2447,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001a);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x001a
@@ -2470,7 +2470,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001c);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, crash
@@ -2493,7 +2493,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001a);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # load 0x001a
@@ -2516,7 +2516,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001c);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 $cpu->step; # execute SET PC, crash
@@ -2539,7 +2539,7 @@ is_deeply(
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
 is($cpu->PC, 0x001a);
-is($cpu->SP, 0xffff);
+is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 
 done_testing;

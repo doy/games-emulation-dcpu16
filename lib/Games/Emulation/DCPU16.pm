@@ -21,7 +21,7 @@ sub new {
         memory           => [(0x0000) x 0x10000],
         registers        => [(0x0000) x 8],
         PC               => 0x0000,
-        SP               => 0xffff,
+        SP               => 0x0000,
         O                => 0x0000,
 
         halt             => undef,
@@ -186,13 +186,15 @@ sub _parse_value {
         $self->{$key} = $value - 0x20;
     }
     elsif ($value == 0x18) {
-        $self->{$key} = $self->{memory}[++$self->{SP}];
+        $self->{$key} = $self->{memory}[($self->{SP}++ & 0xffff)];
+        $self->{SP} &= 0xffff;
     }
     elsif ($value == 0x19) {
         $self->{$key} = $self->{memory}[$self->{SP}];
     }
     elsif ($value == 0x1a) {
-        $self->{$key} = $self->{memory}[$self->{SP}--];
+        $self->{$key} = $self->{memory}[(--$self->{SP} & 0xffff)];
+        $self->{SP} &= 0xffff;
     }
     elsif ($value == 0x1b) {
         $self->{$key} = $self->{SP};
@@ -491,7 +493,8 @@ sub _op_JSR {
 
     return if $self->_delay(2);
 
-    $self->{memory}[$self->{SP}--] = $self->{PC};
+    $self->{memory}[(--$self->{SP} & 0xffff)] = $self->{PC};
+    $self->{SP} &= 0xffff;
     $self->{PC} = $a;
 }
 
@@ -503,10 +506,6 @@ sub _op_HLT {
 }
 
 =for notes
-
-is SP defined to start at 0xffff?
-
-is PC defined to start at 0?
 
 behavior of MOD?
 
@@ -520,9 +519,6 @@ or before execution of the next op? really, when is PC incremented in general?
 does memory start out as 0, or undefined?
 
 what happens when an invalid op is read?
-
-POP should be [++SP] and PUSH should be [SP--] (actually PUSH shouldn't return
-anything, probably)
 
 =cut
 
