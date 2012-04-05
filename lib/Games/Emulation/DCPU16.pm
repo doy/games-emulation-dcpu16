@@ -507,16 +507,8 @@ sub _op_HLT {
 
 =for notes
 
-behavior of MOD?
-
-behavior of underflow?
-
-how do you do only a PUSH? POP and PEEK make sense as values, PUSH doesn't
-
 is PC incremented for success of the test ops during execution of the test op,
 or before execution of the next op? really, when is PC incremented in general?
-
-does memory start out as 0, or undefined?
 
 what happens when an invalid op is read?
 
