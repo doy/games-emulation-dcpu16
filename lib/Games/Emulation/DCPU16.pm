@@ -24,6 +24,8 @@ sub new {
         SP               => 0x0000,
         O                => 0x0000,
 
+        clock            => 0,
+
         halt             => undef,
         delay            => 0,
         time_taken       => TIME_TAKEN_NONE,
@@ -68,6 +70,7 @@ sub registers { shift->{registers} }
 sub PC        { shift->{PC}        }
 sub SP        { shift->{SP}        }
 sub O         { shift->{O}         }
+sub clock     { shift->{clock}     }
 
 sub load {
     my $self = shift;
@@ -87,6 +90,8 @@ sub run {
 
 sub step {
     my $self = shift;
+
+    $self->{clock}++;
 
     if ($self->{delay}) {
         $self->{delay}--;
