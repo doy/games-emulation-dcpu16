@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use Games::Emulation::DCPU16::Assembler;
+use Getopt::Long;
+
+my $out = 'a.out';
+GetOptions(
+    'output=s' => \$out,
+);
+
+my $file = $ARGV[0];
+open my $fh, '<', $file or die "Couldn't open $file for reading: $!";
+my $script = do { local $/; <$fh> };
+
+my $assembler = Games::Emulation::DCPU16::Assembler->new;
+my $bin = $assembler->assemble($script);
+
+open my $outfh, '>', $out or die "Couldn't open $out for writing: $!";
+print $outfh $bin;
+close $outfh or die "Couldn't close $out: $!";
