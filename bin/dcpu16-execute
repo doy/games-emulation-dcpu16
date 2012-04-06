@@ -1,0 +1,50 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use Games::Emulation::DCPU16;
+use Games::Emulation::DCPU16::Util 'format_registers', 'format_memory';
+use Getopt::Long;
+use Time::HiRes;
+
+my $iterations;
+my $dump_file = 'dcpu16.dump';
+GetOptions(
+    'iterations=i' => \$iterations,
+    'dump=s'       => \$dump_file,
+);
+
+my $bin = $ARGV[0];
+open my $fh, '<', $bin or die "Couldn't open $bin for reading: $!";
+
+my $bytecode = do { local $/; <$fh> };
+
+my $cpu = Games::Emulation::DCPU16->new;
+$cpu->load($bytecode);
+
+my $time = Time::HiRes::time;
+if (defined $iterations) {
+    $cpu->step for 1..$iterations;
+}
+else {
+    $cpu->run;
+}
+
+END {
+    my $duration = Time::HiRes::time - $time;
+    open my $dump_fh, '>', $dump_file
+        or die "Couldn't open $dump_file for writing: $!";
+
+    print { $dump_fh } "Executed for " . $cpu->clock
+                     . " cycles in $duration seconds\n\n";
+
+    print { $dump_fh } "Registers:\n"
+                     . format_registers($cpu->registers,
+                                        $cpu->SP, $cpu->PC, $cpu->O)
+                     . "\n";
+
+    print { $dump_fh } "Memory:\n"
+                     . format_memory($cpu->memory);
+
+    close($dump_fh) or die "Couldn't close $dump_file: $!";
+}
