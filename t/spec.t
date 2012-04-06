@@ -88,7 +88,7 @@ is_deeply(
     $cpu->registers,
     [ (0x0000) x 8 ],
 );
-is($cpu->PC, 0x0002);
+is($cpu->PC, 0x0000);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 1);
@@ -130,7 +130,7 @@ is_deeply(
     $cpu->registers,
     [ 0x0030, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0004);
+is($cpu->PC, 0x0002);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 3);
@@ -151,7 +151,7 @@ is_deeply(
     $cpu->registers,
     [ 0x0030, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0005);
+is($cpu->PC, 0x0002);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 4);
@@ -197,7 +197,7 @@ is_deeply(
     $cpu->registers,
     [ 0x0030, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0007);
+is($cpu->PC, 0x0005);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 6);
@@ -220,7 +220,7 @@ is_deeply(
     $cpu->registers,
     [ 0x0030, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0007);
+is($cpu->PC, 0x0005);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 7);
@@ -266,7 +266,7 @@ is_deeply(
     $cpu->registers,
     [ 0x0010, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0008);
+is($cpu->PC, 0x0007);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 9);
@@ -289,7 +289,7 @@ is_deeply(
     $cpu->registers,
     [ 0x0010, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0008);
+is($cpu->PC, 0x0007);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 10);
@@ -358,7 +358,7 @@ is_deeply(
     $cpu->registers,
     [ 0x0010, (0x0000) x 5, 0x000a, 0x0000 ],
 );
-is($cpu->PC, 0x000d);
+is($cpu->PC, 0x000b);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 13);
@@ -404,7 +404,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x000a, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 15);
@@ -450,7 +450,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x000a, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 17);
@@ -496,7 +496,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 19);
@@ -542,7 +542,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 21);
@@ -588,7 +588,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 23);
@@ -634,7 +634,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0009, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 25);
@@ -680,7 +680,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 27);
@@ -726,7 +726,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 29);
@@ -772,7 +772,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 31);
@@ -818,7 +818,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0008, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 33);
@@ -864,7 +864,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 35);
@@ -910,7 +910,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 37);
@@ -956,7 +956,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 39);
@@ -1002,7 +1002,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0007, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 41);
@@ -1048,7 +1048,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 43);
@@ -1094,7 +1094,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 45);
@@ -1140,7 +1140,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 47);
@@ -1186,7 +1186,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0006, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 49);
@@ -1232,7 +1232,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 51);
@@ -1278,7 +1278,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 53);
@@ -1324,7 +1324,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 55);
@@ -1370,7 +1370,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0005, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 57);
@@ -1416,7 +1416,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 59);
@@ -1462,7 +1462,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 61);
@@ -1508,7 +1508,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 63);
@@ -1554,7 +1554,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0004, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 65);
@@ -1600,7 +1600,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 67);
@@ -1646,7 +1646,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 69);
@@ -1692,7 +1692,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 71);
@@ -1738,7 +1738,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0003, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 73);
@@ -1784,7 +1784,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 75);
@@ -1830,7 +1830,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 77);
@@ -1876,7 +1876,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 79);
@@ -1922,7 +1922,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0002, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 81);
@@ -1968,7 +1968,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 83);
@@ -2014,7 +2014,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
-is($cpu->PC, 0x0013);
+is($cpu->PC, 0x0011);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 85);
@@ -2060,7 +2060,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
-is($cpu->PC, 0x000f);
+is($cpu->PC, 0x000d);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 87);
@@ -2106,7 +2106,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 5, 0x0001, 0x0000 ],
 );
-is($cpu->PC, 0x0010);
+is($cpu->PC, 0x000f);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 89);
@@ -2152,7 +2152,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 91);
@@ -2175,7 +2175,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 7 ],
 );
-is($cpu->PC, 0x0011);
+is($cpu->PC, 0x0010);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 92);
@@ -2244,7 +2244,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x0016);
+is($cpu->PC, 0x0014);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 95);
@@ -2267,7 +2267,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x0016);
+is($cpu->PC, 0x0014);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 96);
@@ -2315,7 +2315,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0004, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x0019);
+is($cpu->PC, 0x0018);
 is($cpu->SP, 0xffff);
 is($cpu->O,  0x0000);
 is($cpu->clock, 98);
@@ -2387,7 +2387,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x0018);
+is($cpu->PC, 0x0016);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 101);
@@ -2435,7 +2435,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x001c);
+is($cpu->PC, 0x001a);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 103);
@@ -2483,7 +2483,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x001c);
+is($cpu->PC, 0x001a);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 105);
@@ -2531,7 +2531,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x001c);
+is($cpu->PC, 0x001a);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 107);
@@ -2579,7 +2579,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x001c);
+is($cpu->PC, 0x001a);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 109);
@@ -2627,7 +2627,7 @@ is_deeply(
     $cpu->registers,
     [ 0x2000, (0x0000) x 2, 0x0040, (0x0000) x 4 ],
 );
-is($cpu->PC, 0x001c);
+is($cpu->PC, 0x001a);
 is($cpu->SP, 0x0000);
 is($cpu->O,  0x0000);
 is($cpu->clock, 111);

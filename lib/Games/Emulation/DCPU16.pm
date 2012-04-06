@@ -37,6 +37,8 @@ sub new {
         value1           => undef,
         value2           => undef,
         next_word        => undef,
+        pc_offset        => 0,
+        jumped           => undef,
 
         basic_opcode_map => [
             undef,
@@ -102,7 +104,9 @@ sub step {
     while (1) {
         my $state = $self->{state};
         if ($state == STATE_NEW_OP) {
-            $self->{state} = $self->_parse_op($self->{memory}[$self->{PC}++]);
+            $self->{state} = $self->_parse_op($self->{memory}[$self->{PC}]);
+            $self->{pc_offset} = 1;
+            undef $self->{jumped};
         }
         elsif ($state == STATE_READ_ARG_1) {
             $self->{state} = $self->_parse_value($self->{value1})
@@ -126,7 +130,7 @@ sub _op_length {
     my $self = shift;
 
     my $length = 1;
-    $self->_parse_op($self->{memory}[$self->{PC}]);
+    $self->_parse_op($self->{memory}[$self->{PC} + $self->{pc_offset}]);
 
     for my $value ($self->{value1}, $self->{value2}) {
         next unless defined $value;
@@ -243,6 +247,8 @@ sub _execute_current_op {
 
     return $self->{state} if $self->{time_taken} != TIME_TAKEN_WORK;
 
+    $self->{PC} += $self->{pc_offset}
+        unless $self->{jumped};
     $self->{lvalue} = undef;
 
     return STATE_NEW_OP;
@@ -255,7 +261,8 @@ sub _next_word {
 
     return 1 if $self->_delay(1);
 
-    $self->{next_word} = $self->{memory}[$self->{PC}++];
+    $self->{next_word} = $self->{memory}[$self->{PC} + $self->{pc_offset}];
+    $self->{pc_offset}++;
 
     return;
 }
@@ -289,6 +296,9 @@ sub _op_SET {
 
     my $lvalue = $self->{lvalue};
     return unless $lvalue;
+
+    $self->{jumped} = 1
+        if $lvalue == \$self->{PC};
 
     ${ $self->{lvalue} } = $b;
 }
@@ -446,7 +456,7 @@ sub _op_IFE {
     else {
         return if $self->_delay(3);
 
-        $self->{PC} += $self->_op_length;
+        $self->{pc_offset} += $self->_op_length;
     }
 }
 
@@ -460,7 +470,7 @@ sub _op_IFN {
     else {
         return if $self->_delay(3);
 
-        $self->{PC} += $self->_op_length;
+        $self->{pc_offset} += $self->_op_length;
     }
 }
 
@@ -474,7 +484,7 @@ sub _op_IFG {
     else {
         return if $self->_delay(3);
 
-        $self->{PC} += $self->_op_length;
+        $self->{pc_offset} += $self->_op_length;
     }
 }
 
@@ -488,7 +498,7 @@ sub _op_IFB {
     else {
         return if $self->_delay(3);
 
-        $self->{PC} += $self->_op_length;
+        $self->{pc_offset} += $self->_op_length;
     }
 }
 
@@ -498,9 +508,10 @@ sub _op_JSR {
 
     return if $self->_delay(2);
 
-    $self->{memory}[(--$self->{SP} & 0xffff)] = $self->{PC};
+    $self->{memory}[(--$self->{SP} & 0xffff)] = $self->{PC} + $self->{pc_offset};
     $self->{SP} &= 0xffff;
     $self->{PC} = $a;
+    $self->{jumped} = 1;
 }
 
 sub _op_HLT {
@@ -511,9 +522,6 @@ sub _op_HLT {
 }
 
 =for notes
-
-is PC incremented for success of the test ops during execution of the test op,
-or before execution of the next op? really, when is PC incremented in general?
 
 what happens when an invalid op is read?
 
